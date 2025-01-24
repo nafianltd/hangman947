@@ -45,17 +45,24 @@ class Hangman:
                 print("Invalid input. Please enter a single alphabetical character or 'guess' to guess the entire word.")
 
 def play_game(word_list):
-    num_lives = 5
-    game = Hangman(word_list, num_lives)
-
     while True:
-        if game.num_lives == 0:
-            print(f"You lost! The word was: {game.word}")
-            break
-        elif game.num_letters > 0:
-            game.ask_for_input()
-        else:
-            print("Congratulations. You won the game!")
+        num_lives = 5
+        game = Hangman(word_list, num_lives)
+
+        while True:
+            if game.num_lives == 0:
+                print(f"You lost! The word was: {game.word}")
+                break
+            elif game.num_letters > 0:
+                game.ask_for_input()
+            else:
+                print("Congratulations. You won the game!")
+                break
+
+        # Ask user if they want to play again
+        play_again = input("Do you want to play again? (y/n): ").lower()
+        if play_again != 'y':
+            print("Thanks for playing!")
             break
 
 # Example word list
